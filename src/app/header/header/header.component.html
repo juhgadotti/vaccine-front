@@ -1,0 +1,9 @@
+<header class="d-flex justify-content-center align-items-center p-1 header-height border-bottom">    
+  <div class="d-flex align-items-center gap-4">
+  <button *ngFor="let btn of buttons"
+          class="btn btn-sm btn-outline-primary"
+          [routerLink]="btn.route">
+    <i class="fa-solid" [ngClass]="btn.icon + ' me-1'"></i> {{ btn.label }}
+  </button>
+</div>
+</header>

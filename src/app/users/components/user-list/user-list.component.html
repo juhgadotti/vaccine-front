@@ -1,0 +1,43 @@
+<main>
+  <div class="page-background d-flex justify-content-center align-items-start py-5">
+    <div class="container bg-white rounded-lg p-4 shadow-sm">
+
+      <ng-container *ngIf="userList$ | async as users; else loading">
+        <div class="row font-weight-bold border-bottom pb-2 mb-3">
+          <div class="col-5">Paciente</div>
+          <div class="col-2">Total de vacinas</div>
+          <div class="col-3">Última aplicação</div>
+          <div class="col-2">Apagar paciente</div>
+        </div>
+
+        <div *ngFor="let user of users; trackBy: trackById" class="mb-3">
+          <div class="row bg p-3 rounded bg-light-blue pointer" (click)="goToUser(user.id)">
+            <div class="col-5">
+              <div class="font-weight-bold">{{ user.name }}</div>
+            </div>
+
+            <div class="col-2 d-flex justify-content-between">
+              {{ user.totalDoses }}
+            </div>
+
+            <div class="col-3 justify-content-between">
+              {{ user.lastVaccination | date:'dd/MM/yyyy' }}
+            </div>
+
+            <div class="col-2">
+              <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id); $event.stopPropagation()">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p *ngIf="users.length === 0" class="text-muted m-0">Nenhum paciente encontrado.</p>
+      </ng-container>
+
+      <ng-template #loading>
+        <p>Carregando<i class="fa-solid fa-spinner fa-pulse ms-2"></i></p>
+      </ng-template>
+
+    </div>
+  </div>
+</main>

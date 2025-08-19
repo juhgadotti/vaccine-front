@@ -1,0 +1,27 @@
+.header-height {
+  height: 45px;            
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0; 
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem; 
+  border-radius: 6px; 
+}
+
+.btn-outline-primary {
+  color: #3978d8;
+  border-color: #3978d8;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #115ccc;
+  color: #fff;
+}
+
+.me-1 {
+  margin-right: 0.35rem; 
+}
