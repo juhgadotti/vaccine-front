@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+.page-background {  
+  min-height: 100vh;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #c4e6ff; 
+}
+
+.rounded-lg {
+  border-radius: 20px;
+}
+
+.limited-width{
+    width: 500px;
+}
+
+.bg-light-blue {
+  background-color: #f1fbfd;
+}
+
+.pointer {
+  cursor: pointer;
+}
