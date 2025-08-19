@@ -1,0 +1,41 @@
+<main>
+    <div class="user-data-container d-flex justify-content-center mt-4">
+        <app-user-data [userId]="userId"></app-user-data>
+    </div>
+    <div class="page-background d-flex justify-content-center align-items-start py-5">
+        <div class="container bg-white rounded-lg p-4 shadow-sm">
+            <div class="row font-weight-bold border-bottom pb-2 mb-3">
+                <div class="col-5">Vacina</div>
+                <div class="col-2">Dose</div>
+                <div class="col-3">Data Aplicação</div>
+                <div class="col-2">Apagar registro</div>
+            </div>
+
+            <div *ngFor="let vac of historyList" class="mb-3">
+                <div class="row p-3 rounded bg-light-blue">
+
+                    <div class="col-5">
+                        <div class="font-weight-bold">{{ vac.name }}</div>
+                        <div class="text-muted small">Total de doses da vacina: {{ vac.totalDoses }}</div>
+                    </div>
+
+                    <div class="col-7">
+                        <div class="scrollable-list pr-2">
+                            <div *ngFor="let dose of vac.doses"
+                                class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="col-2">{{ dose.dose }}</div>
+                                <div class="col-3">
+                                    {{ dose.dateApplied | date:'dd/MM/yyyy' }}
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn btn-sm btn-outline-danger" (click)="deleteVaccination(dose.id)"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
