@@ -1,0 +1,41 @@
+<div class="page-background d-flex justify-content-center align-items-start py-5">
+    <div class="container bg-white rounded-lg limited-width p-4 shadow-sm">
+        <div class="d-flex justify-content-center mb-3">
+            <h5>Criar nova vacina<i class="fa-solid fa-syringe ms-3"></i></h5>
+        </div>
+        <form [formGroup]="vaccineForm" (ngSubmit)="registerVaccine()">
+            <div class="form-group mb-3">
+                <label for="name" class="font-weight-bold">Nome:</label>
+                <input type="text" id="name" class="form-control" formControlName="name" required maxlength="30">
+                <div *ngIf="vaccineForm.get('name')?.touched && vaccineForm.get('name')?.invalid"
+                    class="text-danger small mt-1">
+                    <div *ngIf="vaccineForm.get('name')?.errors?.['required']">
+                        O nome da vacina é obrigatório.
+                    </div>
+                    <div *ngIf="vaccineForm.get('name')?.errors?.['maxlength']">
+                        O nome não pode ter mais que 30 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="dosesQuantity">Quantidade de doses:</label>
+                <input type="number" id="dosesQuantity" class="form-control" formControlName="doses">
+
+
+                <div *ngIf="vaccineForm.get('doses')?.invalid" class="text-danger small mt-1">
+                    <div *ngIf="vaccineForm.get('doses')?.errors?.['min']">
+                        O mínimo é 1 dose.
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="successMessage" class="alert alert-success text-center">
+                {{ successMessage }}
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-success" [disabled]="vaccineForm.invalid">
+                    Registrar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="page-background d-flex justify-content-center align-items-start py-5">
+  <div class="container bg-white rounded-lg limited-width p-4 shadow-sm">
+    <div class="d-flex justify-content-center mb-3">
+      <h5>Criar novo paciente<i class="fa-solid fa-user ms-2"></i></h5>
+    </div>
+    <form #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
+      <div class="form-group mb-3">
+        <label for="name" class="font-weight-bold mb-2">Nome do paciente:</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="userName" maxlength="50" name="name" required />
+      </div>
+        <div *ngIf="successMessage" class="alert alert-success text-center">
+          {{ successMessage }}
+        </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

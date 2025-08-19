@@ -1,0 +1,48 @@
+<div class="page-background d-flex justify-content-center align-items-start py-5">
+    <div class="container bg-white rounded-lg limited-width p-4 shadow-sm">
+        <div class="d-flex justify-content-center mb-3">
+            <h5>Registrar nova vacinação<i class="fa-solid fa-syringe ms-3"></i></h5>
+        </div>
+        <form (ngSubmit)="registerVaccination()" #vaccinationForm="ngForm">
+            <div class="form-group mb-3">
+                <label for="user" class="font-weight-bold">Paciente</label>
+                <select id="user" class="form-control" [(ngModel)]="selectedUser" name="user" required>
+                    <option *ngFor="let user of userList" [ngValue]="user">
+                        {{ user.name }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="vaccine" class="font-weight-bold">Vacina</label>
+                <select id="vaccine" class="form-control" [(ngModel)]="selectedVaccine" name="vaccine"
+                    (change)="generateDoses()" required>
+                    <option *ngFor="let vaccine of vaccineList" [ngValue]="vaccine">
+                        {{ vaccine.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="dose" class="font-weight-bold">Dose</label>
+                <select id="dose" class="form-control" [(ngModel)]="selectedDose" name="dose" required>
+                    <option *ngFor="let dose of availableDoses" [value]="dose">
+                        {{ dose }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="dateApplied" class="font-weight-bold">Data de Aplicação</label>
+                <input type="date" id="dateApplied" class="form-control" [(ngModel)]="dateApplied" name="dateApplied"
+                    required>
+            </div>
+            <div *ngIf="successMessage" class="alert alert-success text-center">
+                {{ successMessage }}
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-success" [disabled]="!vaccinationForm.form.valid">
+                    Registrar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
